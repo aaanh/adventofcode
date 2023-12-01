@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+fswatch -o ./problems/ | xargs -n1 -I{} make all
