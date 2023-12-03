@@ -1,3 +1,3 @@
-module aaanh/aoc
+module aaanh/aoc/2022
 
 go 1.19
