@@ -8,23 +8,31 @@ import (
 	"strings"
 )
 
-type game struct {
+const RED_MAX = 12
+const GREEN_MAX = 13
+const BLUE_MAX = 14
+
+type Game struct {
 	Id      int
-	Configs []config
+	Configs []Config
 }
 
-type config struct {
+type Config struct {
 	Green int
 	Blue  int
 	Red   int
+}
+
+func isValidGame(g Game) bool {
+	return true
 }
 
 func parseConfig(config string) {
 
 }
 
-func parseLineToGame(line string) game {
-	var g game
+func parseLineToGame(line string) Game {
+	var g Game
 
 	id := strings.Split(string(line), "\n")[0]
 	id = strings.Split(string(id), " ")[1]
@@ -33,25 +41,22 @@ func parseLineToGame(line string) game {
 
 	configs := strings.Split(string(strings.Split(string(line), ":")[1]), ";")
 
-	fmt.Print(configs, " ")
-
-	re := regexp.MustCompile(`\d+|\ |red|green|blue`)
+	re := regexp.MustCompile(`\d+|red|green|blue`)
 
 	for _, config := range configs {
+		fmt.Println(config)
 		for _, set := range strings.Split(config, ",") {
 			matches := re.FindAllString(set, -1)
-			fmt.Println(matches)
+			_ = matches
 		}
 	}
 
-	return g
+	fmt.Println()
 
+	return g
 }
 
 func main() {
-	const RED_MAX = 12
-	const GREEN_MAX = 13
-	const BLUE_MAX = 14
 
 	input, _ := os.ReadFile("./day2.input")
 	lines := strings.Split(string(input), "\n")
