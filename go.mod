@@ -1,1 +1,3 @@
 module aaanh/adventofcode
+
+[dependencies]
