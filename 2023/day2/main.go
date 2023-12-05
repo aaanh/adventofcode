@@ -107,7 +107,7 @@ func main() {
 		// fmt.Println()
 	}
 
-	sum2 := 0
+	power_sum := 0
 	for _, game := range games {
 		minRed := 0
 		minGreen := 0
@@ -126,6 +126,8 @@ func main() {
 				minBlue = config.Blue
 			}
 		}
+
+		// Such that power is not calculated to zero if one of them doesn't exist in the config
 		if minGreen == 0 {
 			minGreen = 1
 		}
@@ -135,11 +137,11 @@ func main() {
 		if minRed == 0 {
 			minRed = 1
 		}
+
 		power = minRed * minBlue * minGreen
-		fmt.Println("power:", power)
-		sum2 += power
+		power_sum += power
 	}
 
-	fmt.Println(id_sum)
-	fmt.Println(sum2)
+	fmt.Println("Sum of valid id's:", id_sum)
+	fmt.Println("Sum of valid powers:", power_sum)
 }
