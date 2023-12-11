@@ -92,21 +92,14 @@ func main() {
 		part1 += card.Points
 	}
 
-	cardCopies := make(map[int]int)
+	part2 := len(cards)
 
-	for i := 0; i < len(cards); i++ {
-		card := cards[i]
-		numOfMatches := card.Matches
-
-		// Win copies of the next cards based on the matching numbers.
-		for j := i + 1; j <= i+numOfMatches && j < len(cards); j++ {
-			nextCard := &cards[j]
-			cardCopies[nextCard.Id] += 1
-			nextCard.Winnings = append(nextCard.Winnings, card.Id)
-			nextCard.Rolls = append(nextCard.Rolls, i+1)
+	for i := 0; i < part2; i++ {
+		if (i+cards[i].Matches) < part2 && (cards[i].Matches > 0) {
+			part2 = part2.append()
 		}
 	}
 
 	fmt.Println("Part 1:", part1)
-	fmt.Println("Part 2:", len(cards))
+	fmt.Println("Part 2:", part2)
 }
