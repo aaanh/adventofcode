@@ -2,7 +2,8 @@
   "name": "2024",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "get-today": "dotenvx run -f .env.local -- tsx src/utils/problem-service.ts"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.28.0",
     "tsx": "^4.19.2"
   },
   "type": "module"
