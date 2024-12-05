@@ -57,10 +57,14 @@ async function ProblemService() {
       fs.writeFileSync(problemInput, input);
     });
 
+    console.log(
+      "Problem URL: ",
+      `https://adventofcode.com/${year}/day/${argvDay}`
+    );
+
     exit(0);
   }
 
-  const problemPart = process.argv[3] ?? 1;
   const problemPath = `src/days/${day}`;
   const problemIndex = `${problemPath}/index.ts`;
   const problemInput = `${problemPath}/input.txt`;
@@ -68,6 +72,7 @@ async function ProblemService() {
   await getProblemInput(token, today, year).then((input) => {
     fs.writeFileSync(problemInput, input);
   });
+  console.log("Problem URL: ", `https://adventofcode.com/${year}/day/${today}`);
 
   exit(0);
 }
