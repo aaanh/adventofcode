@@ -51,7 +51,7 @@ async function ProblemService() {
     const problemPart = parseInt(process.argv[3] ?? 1);
     const problemPath = `src/days/${day}`;
     const problemIndex = `${problemPath}/index.ts`;
-    const problemInput = `${problemPath}/input-${problemPart}.txt`;
+    const problemInput = `${problemPath}/input.txt`;
     createProblemFolder(problemPath, problemIndex);
     await getProblemInput(token, argvDay, year, problemPart).then((input) => {
       fs.writeFileSync(problemInput, input);
@@ -63,7 +63,7 @@ async function ProblemService() {
   const problemPart = process.argv[3] ?? 1;
   const problemPath = `src/days/${day}`;
   const problemIndex = `${problemPath}/index.ts`;
-  const problemInput = `${problemPath}/input-${problemPart}.txt`;
+  const problemInput = `${problemPath}/input.txt`;
   createProblemFolder(problemPath, problemIndex);
   await getProblemInput(token, today, year).then((input) => {
     fs.writeFileSync(problemInput, input);

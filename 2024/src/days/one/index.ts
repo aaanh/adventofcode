@@ -7,7 +7,7 @@ import fs from "fs/promises";
 
 export default async function One() {
   try {
-    const input = await fs.readFile("src/days/one/input-2.txt", "utf-8");
+    const input = await fs.readFile("src/days/one/input.txt", "utf-8");
 
     // process the lines
     const lines = input
