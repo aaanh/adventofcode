@@ -2,13 +2,8 @@ import { exit } from "process";
 import { numberWords } from "./days";
 import fs from "fs";
 
-async function getProblemInput(
-  token: string,
-  day: number,
-  year: number,
-  part: number = 1
-) {
-  if (fs.existsSync(`src/days/${numberWords[day - 1]}/input-${part}.txt`)) {
+async function getProblemInput(token: string, day: number, year: number) {
+  if (fs.existsSync(`src/days/${numberWords[day - 1]}/input.txt`)) {
     return Promise.resolve("");
   }
 
@@ -48,12 +43,12 @@ async function ProblemService() {
   if (process.argv[2]) {
     const argvDay = parseInt(process.argv[2]);
     day = numberWords[argvDay - 1];
-    const problemPart = parseInt(process.argv[3] ?? 1);
+
     const problemPath = `src/days/${day}`;
     const problemIndex = `${problemPath}/index.ts`;
     const problemInput = `${problemPath}/input.txt`;
     createProblemFolder(problemPath, problemIndex);
-    await getProblemInput(token, argvDay, year, problemPart).then((input) => {
+    await getProblemInput(token, argvDay, year).then((input) => {
       fs.writeFileSync(problemInput, input);
     });
 
