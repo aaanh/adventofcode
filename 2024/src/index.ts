@@ -1,14 +1,21 @@
 import One from "@/days/one";
-import { problemSeparator } from "./utils/output-format";
-import Four from "./days/four";
 import Two from "./days/two";
+import Four from "./days/four";
+import Five from "./days/five";
+import { numberWords } from "./utils/days";
 
-// await One();
+const day = parseInt(process.argv[2]);
+const solutions = [One, Two, Four, Five];
 
-// problemSeparator();
-
-// Four();
-
-// problemSeparator();
-
-Two();
+switch (day) {
+  case 1:
+    One();
+  case 2:
+    Two();
+  case 4:
+    Four();
+  case 5:
+    Five();
+  default:
+    solutions[solutions.length - 1]();
+}
